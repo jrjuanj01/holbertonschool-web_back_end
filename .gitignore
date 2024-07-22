@@ -3,3 +3,4 @@ package-lock.json
 package.json
 babel.config.js
 .eslintrc.js
+ES6_data_manipulation/test.js
