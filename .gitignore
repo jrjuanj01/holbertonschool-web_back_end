@@ -4,3 +4,5 @@ package.json
 babel.config.js
 .eslintrc.js
 ES6_data_manipulation/test.js
+__pycache__
+1main.py

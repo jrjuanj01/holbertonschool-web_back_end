@@ -12,4 +12,3 @@ async def wait_n(n: int, max_delay: int) -> List:
         wait_time = await wR(max_delay)
         result.append(wait_time)
     return sorted(result)
-    
