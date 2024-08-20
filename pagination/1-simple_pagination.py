@@ -28,8 +28,9 @@ class Server:
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         assert page
         assert page_size
-        dataset = dataset()
-        if page > len(dataset) or page_size > len(dataset):
+        self.__dataset = self.dataset()
+        data = self.__dataset
+        if page > len(data) or page_size > len(data):
             return []
         range = index_range(page, page_size)
-        return dataset[range]
+        return data[range]
