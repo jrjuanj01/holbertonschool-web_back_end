@@ -29,5 +29,5 @@ class Server:
         assert type(page) is int and page > 0
         assert type(page_size) is int and page_size > 0
         data = Server.dataset(self)
-        range = index_range(page, page_size)
-        return data[range[0]:range[1]]
+        pp = index_range(page, page_size)
+        return data[pp[0]:pp[1]]
