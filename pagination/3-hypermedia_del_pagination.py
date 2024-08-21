@@ -43,15 +43,15 @@ class Server:
         """Function to determine pagination index"""
 
         full_data = self.indexed_dataset()
-        assert index < len(data) and index >= 0
+        assert index < len(full_data) and index >= 0
         data = []
         next_index = index + page_size
         idx = index
         for _idx in range(page_size):
-            if not full_data[idx]:
+            if not full_data.get(idx):
                 next_index += 1
                 idx += 1
-            data.append(full_data[idx])
+            data.append(full_data.get(idx))
             idx += 1
 
         idxdict = {
