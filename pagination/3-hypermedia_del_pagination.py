@@ -47,15 +47,17 @@ class Server:
         data = []
         next_index = index + page_size
         idx = index
-        for idx in range(page_size):
-            if not full_data[idx]: 
+        for _idx in range(page_size):
+            if not full_data[idx]:
                 next_index += 1
-                idx += 1 
+                idx += 1
             data.append(full_data[idx])
+            idx += 1
+
         idxdict = {
             "index": index,
+            "data": data,
             "next_index": next_index,
-            "page_size": page_size,
-            "data": data
+            "page_size": page_size
             }
         return idxdict
