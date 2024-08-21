@@ -42,9 +42,12 @@ class Server:
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
         """Function to determine pagination index"""
 
-        data = self.indexed_dataset()
+        full_data = self.indexed_dataset()
         assert type(index) < len(data) and index >= 0
+        data = []
         next_index = index + page_size
+        for idx in range(index, next_index):
+            data.append(full_data[idx])
         idxdict = {
             "index": index,
             "next_index": next_index,
