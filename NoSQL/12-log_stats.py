@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Module with a stats function"""
+"""Stat checker"""
 from pymongo import MongoClient
 
 
@@ -13,24 +13,18 @@ def log_stats():
     total_logs = nginx_collection.count_documents({})
 
     # Count documents for each HTTP method
-    method_counts = {
-        "GET": nginx_collection.count_documents({"method": "GET"}),
-        "POST": nginx_collection.count_documents({"method": "POST"}),
-        "PUT": nginx_collection.count_documents({"method": "PUT"}),
-        "PATCH": nginx_collection.count_documents({"method": "PATCH"}),
-        "DELETE": nginx_collection.count_documents({"method": "DELETE"}),
-    }
+    methods = ["GET", "POST", "PUT", "PATCH", "DELETE"]
+    method_counts = {method: nginx_collection.count_documents({"method": method}) for method in methods}
 
     # Count the number of status checks (GET requests to /status)
     status_checks = nginx_collection.count_documents({"method": "GET", "path": "/status"})
 
-    # Print the results
+    # Print the results in the required format
     print(f"{total_logs} logs")
     print("Methods:")
-    for method, count in method_counts.items():
-        print(f"\tmethod {method}: {count}")
+    for method in methods:
+        print(f"\tmethod {method}: {method_counts[method]}")
     print(f"{status_checks} status check")
 
 if __name__ == "__main__":
     log_stats()
-
