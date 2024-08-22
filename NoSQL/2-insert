@@ -1,2 +1,16 @@
 // Create a document for new school collection
-db.coll.insert({ name: "Holberton school" })
+db.createCollection("school", {
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            required: ["name"],
+            properties: {
+                name: {
+                    bsonType: "string",
+                    description: "must be a string and is required"
+                }
+            }
+        }
+    }
+})
+db.school.insertOne({ name: "Holberton school" })
