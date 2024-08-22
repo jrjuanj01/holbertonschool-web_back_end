@@ -1,2 +1,2 @@
 // Create a document for new school collection
-db.coll.insertOne({name: "Holberton school"})
+db.coll.insert({ name: "Holberton school" })
