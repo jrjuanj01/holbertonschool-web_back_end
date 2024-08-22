@@ -5,4 +5,4 @@
 def update_topics(mongo_collection, name, topics):
     """Update Function"""
     
-    schools = list(mongo_collection.update({'name': name}, {'$set': {'topics': topics}}))
+    mongo_collection.updateMany({'name': name}, {'$set': {"topics": topics}})
