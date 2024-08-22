@@ -1,0 +1,2 @@
+// Create a collection 
+db.createCollection("school", {"name": "Holberton school"})
