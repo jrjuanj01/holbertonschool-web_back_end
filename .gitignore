@@ -6,3 +6,4 @@ babel.config.js
 ES6_data_manipulation/test.js
 __pycache__
 main.py
+*-main.js
